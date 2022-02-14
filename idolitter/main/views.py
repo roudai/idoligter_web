@@ -1,3 +1,11 @@
-from django.shortcuts import render
+from django.template.response import TemplateResponse
+from django.views import View
 
-# Create your views here.
+class GroupView(View):
+  def get(self, request, *args, **kwargs):
+    context = {
+      'message': "Hello World!",
+    }
+    return TemplateResponse(request, 'main/group.html', context)
+
+group = GroupView.as_view()
